@@ -7,11 +7,11 @@ spring:
   main:
     allow-circular-references: true
   datasource:
-    druid:
-      driver-class-name: ${sky.datasource.driver-class-name}
-      url: jdbc:mysql://${sky.datasource.host}:${sky.datasource.port}/${sky.datasource.database}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
-      username: ${sky.datasource.username}
-      password: ${sky.datasource.password}
+    driver-class-name: com.mysql.cj.jdbc.Driver # 驱动名称
+    url: jdbc:mysql://localhost:3306/sky_take_out
+    username: root
+    password: sql_1
+    type: com.alibaba.druid.pool.DruidDataSource
 
 mybatis:
   #mapper配置文件
