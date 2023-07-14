@@ -30,7 +30,7 @@
         <druid>1.2.15</druid>
         <pagehelper>1.4.7</pagehelper>
         <aliyun.sdk.oss>3.15.1</aliyun.sdk.oss>
-        <knife4j>3.0.3</knife4j>
+        <knife4j>4.1.0</knife4j>
         <aspectj>1.9.19</aspectj>
         <jjwt>0.9.1</jjwt>
         <jaxb-api>2.3.1</jaxb-api>
@@ -78,7 +78,7 @@
 
             <dependency>
                 <groupId>com.github.xiaoymin</groupId>
-                <artifactId>knife4j-spring-boot-starter</artifactId>
+                <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
                 <version>${knife4j}</version>
             </dependency>
 
