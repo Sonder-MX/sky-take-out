@@ -13,6 +13,25 @@ spring:
     password: sql_1
     type: com.alibaba.druid.pool.DruidDataSource
 
+# knife4j配置
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+  group-configs:
+    - group: "default"
+      paths-to-match: "/**"
+      packages-to-scan: com.github.xiaoymin.boot3
+  default-flat-param-object: true
+
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
+
 mybatis:
   #mapper配置文件
   mapper-locations: classpath:mapper/*.xml

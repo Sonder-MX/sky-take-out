@@ -8,6 +8,11 @@ import com.sky.result.Result;
 import com.sky.service.EmployeeService;
 import com.sky.utils.JwtUtil;
 import com.sky.vo.EmployeeLoginVO;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameters;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,6 +29,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/admin/employee")
 @Slf4j
+@Tag(name = "EmployeeController", description = "员工管理")
 public class EmployeeController {
 
     @Autowired
@@ -37,6 +43,10 @@ public class EmployeeController {
      * @param employeeLoginDTO
      * @return
      */
+    @Operation(summary = "登录")
+    @Parameters({
+            @Parameter(name = "employeeLoginDTO", description = "登录信息", required = true)
+    })
     @PostMapping("/login")
     public Result<EmployeeLoginVO> login(@RequestBody EmployeeLoginDTO employeeLoginDTO) {
         log.info("员工登录：{}", employeeLoginDTO);
