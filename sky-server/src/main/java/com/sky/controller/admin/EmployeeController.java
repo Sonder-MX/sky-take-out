@@ -19,6 +19,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -110,6 +111,33 @@ public class EmployeeController {
         log.info("分页查询员工：{}", employeePageQueryDTO);
         PageResult<Employee> pageQueryData = employeeService.pageQuery(employeePageQueryDTO);
         return Result.success(pageQueryData);
+    }
+
+    /**
+     * 启用/禁用
+     * 
+     * @param status
+     * @param id
+     * @return Result<String>
+     */
+    @PostMapping("/status/{status}")
+    public Result<String> startOrStop(@PathVariable Integer status, long id) {
+        log.info("员工启用/禁用：{}, {}", status, id);
+        employeeService.startOrStop(status, id);
+        return Result.success();
+    }
+
+    /**
+     * 根据id查询员工
+     * 
+     * @param id
+     * @return Result<Employee>
+     */
+    @GetMapping("/{id}")
+    public Result<Employee> getById(@PathVariable long id) {
+        log.info("根据id查询员工：{}", id);
+        Employee employee = employeeService.getById(id);
+        return Result.success(employee);
     }
 
 }
