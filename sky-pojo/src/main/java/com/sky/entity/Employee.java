@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+// import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -32,10 +34,10 @@ public class Employee implements Serializable {
 
     private Integer status;
 
-    //@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    // @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss") // 会导致前端接收到的时间格式不对
     private LocalDateTime createTime;
 
-    //@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    // @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime updateTime;
 
     private Long createUser;

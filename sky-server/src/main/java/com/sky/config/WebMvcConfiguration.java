@@ -1,10 +1,17 @@
 package com.sky.config;
 
 import com.sky.interceptor.JwtTokenAdminInterceptor;
+import com.sky.json.JacksonObjectMapper;
+
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 // import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
@@ -63,4 +70,20 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
         registry.addResourceHandler("/doc.html").addResourceLocations("classpath:/META-INF/resources/");
         registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
+
+    /**
+     * 添加自定义消息转换器
+     * 
+     * @param converters
+     */
+    @Override
+    protected void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
+        // 创建一个消息转换器对象
+        MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
+        // 设置消息转换器的支持类型
+        converter.setObjectMapper(new JacksonObjectMapper());
+        // 将消息转换器添加到集合中
+        converters.add(0, converter);
+    }
+
 }
