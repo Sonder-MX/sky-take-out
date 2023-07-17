@@ -21,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -138,6 +139,19 @@ public class EmployeeController {
         log.info("根据id查询员工：{}", id);
         Employee employee = employeeService.getById(id);
         return Result.success(employee);
+    }
+
+    /**
+     * 修改
+     * 
+     * @param employeeDTO
+     * @return Result<String>
+     */
+    @PutMapping
+    public Result<String> update(@RequestBody EmployeeDTO employeeDTO) {
+        log.info("修改员工：{}", employeeDTO);
+        employeeService.update(employeeDTO);
+        return Result.success();
     }
 
 }
