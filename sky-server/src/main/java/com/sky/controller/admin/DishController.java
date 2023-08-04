@@ -1,10 +1,14 @@
 package com.sky.controller.admin;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sky.dto.DishDTO;
@@ -48,5 +52,18 @@ public class DishController {
         log.info("分页查询菜品：{}", dishPageQueryDTO);
         PageResult<DishVO> querySet = dishService.queryPage(dishPageQueryDTO);
         return Result.success(querySet);
+    }
+
+    /**
+     * 删除菜品
+     * 
+     * @param ids
+     * @return
+     */
+    @DeleteMapping
+    public Result<String> delete(@RequestParam List<Long> ids) {
+        log.info("删除菜品：{}", ids);
+        dishService.deleteBatch(ids);
+        return Result.success();
     }
 }
