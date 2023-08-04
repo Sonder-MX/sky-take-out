@@ -31,4 +31,12 @@ public interface SetmealService {
      */
     void deleteBatch(List<Long> ids);
 
+    /**
+     * 根据id查询套餐
+     * 
+     * @param id
+     * @return
+     */
+    SetmealVO getById(Long id);
+
 }
