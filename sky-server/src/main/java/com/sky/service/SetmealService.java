@@ -39,4 +39,11 @@ public interface SetmealService {
      */
     SetmealVO getById(Long id);
 
+    /**
+     * 更新套餐
+     * 
+     * @param setmealDTO
+     */
+    void update(SetmealDTO setmealDTO);
+
 }
