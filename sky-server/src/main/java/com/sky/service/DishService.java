@@ -28,4 +28,12 @@ public interface DishService {
      * @param ids
      */
     public void deleteBatch(List<Long> ids);
+
+    /**
+     * 根据id查询菜品
+     * 
+     * @param id
+     * @return
+     */
+    public DishVO getByIdWithFlavor(Long id);
 }
