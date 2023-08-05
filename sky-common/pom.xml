@@ -56,4 +56,14 @@
             <artifactId>wechatpay-apache-httpclient</artifactId>
         </dependency>
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>4.4.1</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>
