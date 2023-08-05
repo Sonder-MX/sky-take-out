@@ -27,3 +27,6 @@ replay_pid*
 *.iml
 *Test.java
 **/test/
+
+# env yml
+*-env.yml

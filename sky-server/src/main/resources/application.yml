@@ -4,6 +4,8 @@ server:
 spring:
   profiles:
     active: dev
+    include:
+      - env # 在当前目录下新建 application-env.yml 配置敏感信息
   main:
     allow-circular-references: true
   datasource:
@@ -62,3 +64,7 @@ sky:
     admin-ttl: 7200000
     # 设置前端传递过来的令牌名称
     admin-token-name: token
+    # 小程序的jwt配置
+    user-secret-key: itcast
+    user-ttl: 7200000
+    user-token-name: authentication
