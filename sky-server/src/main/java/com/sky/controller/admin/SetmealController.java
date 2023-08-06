@@ -3,6 +3,7 @@ package com.sky.controller.admin;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,6 +38,7 @@ public class SetmealController {
      * @return
      */
     @PostMapping
+    @CacheEvict(cacheNames = "setmealCache", key = "#setmealDTO.categoryId")
     public Result<String> save(@RequestBody SetmealDTO setmealDTO) {
         log.info("新增套餐：{}", setmealDTO);
         setmealService.saveWithDish(setmealDTO);
@@ -63,6 +65,7 @@ public class SetmealController {
      * @return
      */
     @DeleteMapping
+    @CacheEvict(cacheNames = "setmealCache", allEntries = true)
     public Result<String> delete(@RequestParam List<Long> ids) {
         log.info("删除套餐，ids：{}", ids);
         setmealService.deleteBatch(ids);
@@ -89,6 +92,7 @@ public class SetmealController {
      * @return
      */
     @PutMapping
+    @CacheEvict(cacheNames = "setmealCache", allEntries = true)
     public Result<String> update(@RequestBody SetmealDTO setmealDTO) {
         log.info("修改套餐，请求参数：{}", setmealDTO);
         setmealService.update(setmealDTO);
@@ -103,6 +107,7 @@ public class SetmealController {
      * @return
      */
     @PostMapping("/status/{status}")
+    @CacheEvict(cacheNames = "setmealCache", allEntries = true)
     public Result<String> startOrStop(@PathVariable Integer status, Long id) {
         log.info("启用或停用套餐，status：{}，id：{}", status, id);
         setmealService.startOrStop(status, id);
