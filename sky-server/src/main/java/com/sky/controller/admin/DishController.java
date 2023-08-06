@@ -1,8 +1,10 @@
 package com.sky.controller.admin;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,6 +33,9 @@ public class DishController {
     @Autowired
     private DishService dishService;
 
+    @Autowired
+    private RedisTemplate<String, Object> redisTemplate;
+
     /**
      * 新增菜品
      * 
@@ -41,6 +46,8 @@ public class DishController {
     public Result<String> save(@RequestBody DishDTO dishDTO) {
         log.info("新增菜品：{}", dishDTO);
         dishService.saveWithFlavor(dishDTO);
+        String key = "dish_" + dishDTO.getCategoryId();
+        clearRedis(key);
         return Result.success();
     }
 
@@ -67,6 +74,7 @@ public class DishController {
     public Result<String> delete(@RequestParam List<Long> ids) {
         log.info("删除菜品：{}", ids);
         dishService.deleteBatch(ids);
+        clearRedis("dish_*");
         return Result.success();
     }
 
@@ -93,6 +101,7 @@ public class DishController {
     public Result<String> update(@RequestBody DishDTO dishDTO) {
         log.info("更新菜品：{}", dishDTO);
         dishService.updateWithFlavor(dishDTO);
+        clearRedis("dish_*");
         return Result.success();
     }
 
@@ -108,6 +117,7 @@ public class DishController {
         // 1. 启用 0. 停用
         log.info("启用或停用菜品：{}", id);
         dishService.startOrStop(status, id);
+        clearRedis("dish_*");
         return Result.success();
     }
 
@@ -121,5 +131,10 @@ public class DishController {
     public Result<List<Dish>> list(Long categoryId) {
         List<Dish> dishList = dishService.list(categoryId);
         return Result.success(dishList);
+    }
+
+    private void clearRedis(String keys) {
+        Set<String> cacheKeys = redisTemplate.keys(keys);
+        redisTemplate.delete(cacheKeys);
     }
 }
