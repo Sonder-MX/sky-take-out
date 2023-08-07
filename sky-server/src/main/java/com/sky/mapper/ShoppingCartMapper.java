@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.Delete;
 
 import com.sky.entity.ShoppingCart;
 
@@ -37,4 +38,12 @@ public interface ShoppingCartMapper {
             "values " +
             "(#{userId}, #{dishId}, #{setmealId}, #{name}, #{image}, #{amount}, #{number}, #{dishFlavor}, #{createTime})")
     void insert(ShoppingCart shoppingCart);
+
+    /**
+     * 清空购物车
+     * 
+     * @param userId
+     */
+    @Delete("delete from shopping_cart where user_id = #{userId}")
+    void deleteByUserId(Long userId);
 }
