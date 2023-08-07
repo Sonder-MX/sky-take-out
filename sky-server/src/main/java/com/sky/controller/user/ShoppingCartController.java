@@ -60,4 +60,17 @@ public class ShoppingCartController {
         return Result.success();
     }
 
+    /**
+     * 删除购物车中一个商品
+     * 
+     * @param shoppingCartDTO
+     * @return
+     */
+    @PostMapping("/sub")
+    public Result<String> sub(@RequestBody ShoppingCartDTO shoppingCartDTO) {
+        log.info("减少购物车：{}", shoppingCartDTO);
+        shoppingCartService.subShoppingCart(shoppingCartDTO);
+        return Result.success();
+    }
+
 }
