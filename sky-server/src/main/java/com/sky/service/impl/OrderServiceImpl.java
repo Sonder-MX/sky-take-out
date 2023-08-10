@@ -196,7 +196,7 @@ public class OrderServiceImpl implements OrderService {
         Map<String, Object> map = new HashMap<>();
         map.put("type", 1); // 1:来单通知
         map.put("orderId", ordersDB.getId());
-        map.put("orderNumber", "订单号: " + outTradeNo);
+        map.put("content", "订单号: " + outTradeNo);
         String msg = JSON.toJSONString(map);
         webSocketServer.sendToAllClient(msg);
     }
