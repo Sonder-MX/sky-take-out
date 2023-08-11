@@ -1,5 +1,8 @@
 package com.sky.mapper;
 
+import java.time.LocalDateTime;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -32,4 +35,12 @@ public interface UserMapper {
      */
     @Select("select * from user where id = #{userId}")
     public User getById(Long userId);
+
+    /**
+     * 根据动态条件统计用户数量
+     * 
+     * @param map
+     * @return
+     */
+    Integer countByMap(Map<String, LocalDateTime> map);
 }
