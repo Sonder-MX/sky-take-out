@@ -1,6 +1,5 @@
 package com.sky.mapper;
 
-import java.time.LocalDateTime;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -42,5 +41,5 @@ public interface UserMapper {
      * @param map
      * @return
      */
-    Integer countByMap(Map<String, LocalDateTime> map);
+    Integer countByMap(Map<String, Object> map);
 }

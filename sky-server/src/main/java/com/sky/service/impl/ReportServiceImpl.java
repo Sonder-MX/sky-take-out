@@ -191,7 +191,7 @@ public class ReportServiceImpl implements ReportService {
      * @return
      */
     private Integer getUserCount(LocalDateTime beginTime, LocalDateTime endTime) {
-        Map<String, LocalDateTime> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<>();
         map.put("begin", beginTime);
         map.put("end", endTime);
         return userMapper.countByMap(map);

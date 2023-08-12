@@ -90,6 +90,6 @@ public interface DishMapper {
      * @param map
      * @return
      */
-    Integer countByMap(Map<Integer, Integer> map);
+    Integer countByMap(Map<String, Integer> map);
 
 }
