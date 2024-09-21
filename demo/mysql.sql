@@ -166,3 +166,11 @@ CREATE TABLE `user` (
     `create_time` datetime DEFAULT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin COMMENT='用户信息';
+CREATE TABLE  `merchant` (
+	merchant_id VARCHAR (10) PRIMARY KEY NOT NULL,
+	merchant_name VARCHAR (20) NOT NULL,
+	merchant_sex VARCHAR (2),
+	merchant_age INTEGER (3),
+	merchant_id VARCHAR (2),
+	merchant_id VARCHAR (8)
+);
