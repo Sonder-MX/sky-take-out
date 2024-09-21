@@ -15,7 +15,7 @@ CREATE TABLE `address_book` (
     `district_name` varchar(32) CHARACTER SET utf8mb4  DEFAULT NULL COMMENT '区级名称',
     `detail` varchar(200) CHARACTER SET utf8mb4  DEFAULT NULL COMMENT '详细地址',
     `label` varchar(100) CHARACTER SET utf8mb4  DEFAULT NULL COMMENT '标签',
-    `is_default` tinyint(1) NOT NULL DEFAULT '0' COMMENT '默认 0 否 1是',
+    `is_default` tinyint(1) NOT NULL DEFAULT '0' COMMENT '默认 00 否 11是',
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin COMMENT='地址簿';
 
