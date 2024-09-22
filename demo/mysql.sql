@@ -174,3 +174,71 @@ CREATE TABLE  `merchant` (
 	merchant_id VARCHAR (2),
 	merchant_id VARCHAR (8)
 );
+import java.util.Scanner;
+
+/**
+ * 使用递归实现杨辉三角形并把每一行的数据存储到数组中
+ */
+public class YangHui {
+    private int n; //总行数
+    private int[][] array; //存储前n行杨辉三角形的二维数组
+
+    /**
+     * 构造方法
+     */
+    public YangHui(){}
+
+    public YangHui(int n, int[][] array) {
+        this.n = n;
+        this.array = array;
+    }
+
+    /**
+     * 使用递归实现杨辉三角形
+     * @param a 行
+     * @param b 列
+     * @return
+     */
+    public int iter(int a, int b){
+        if (b == 1 || b == a){
+            return 1;
+        }else {
+            return iter(a-1,b-1) + iter(a-1,b);
+        }
+    }
+
+    /**
+     * 利用数组把杨辉三角形的数据存储到数组中，并打印
+     */
+    public void printNum() {
+        for (int i = 0; i < this.array.length; i++) { //行
+            for (int j = 0; j <= i; j++) { //列
+                //调用迭代方法存储到数组中
+                array[i][j] = iter(i + 1, j + 1);
+                //打印
+                System.out.print(array[i][j] + "\t");
+            }
+            System.out.println();
+        }
+    }
+
+
+    /**
+     * 主程序入口
+     * @param args
+     */
+    public static void main(String[] args) {
+        //1.使用扫描仪
+        Scanner sc = new Scanner(System.in);
+        System.out.print("请输入行数：");
+        int row = sc.nextInt();
+
+        //2.创建实例 并使用构造方法设置对象属性
+        YangHui yangHui = new YangHui(row,new int[row][row]);
+
+        //4.调用方法打印杨辉三角形
+        yangHui.printNum();
+
+    }
+}
+
