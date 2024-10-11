@@ -45,6 +45,34 @@ public class Dish implements Serializable {
 
     private Long createUser;
 
+     //甜品id
+    private Long desdishId;
+
+    //甜品套餐id
+    private Long dessetmealId;
+
+    //甜品类别
+    private string descategory;
+  
+    //口味
+    private String desdishFlavor;
+
+    //数量
+    private Integer desnumber;
+
+    //价格
+    private BigDecimal desamount;
+
+    //会员价格
+    private int desvipcost;
+
+    //打折力度
+    private int count;
+  
+    //甜品图片
+    private String desimage;
+
+
     private Long updateUser;
 
 }
