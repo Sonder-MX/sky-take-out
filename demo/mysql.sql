@@ -15,7 +15,7 @@ CREATE TABLE `address_book` (
     `district_name` varchar(32) CHARACTER SET utf8mb4  DEFAULT NULL COMMENT '区级名称',
     `detail` varchar(200) CHARACTER SET utf8mb4  DEFAULT NULL COMMENT '详细地址',
     `label` varchar(100) CHARACTER SET utf8mb4  DEFAULT NULL COMMENT '标签',
-    `is_default` tinyint(1) NOT NULL DEFAULT '0' COMMENT '默认 0 否 1是',
+    `is_default` tinyint(1) NOT NULL DEFAULT '0' COMMENT '默认 00 否 11是',
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin COMMENT='地址簿';
 
@@ -166,3 +166,80 @@ CREATE TABLE `user` (
     `create_time` datetime DEFAULT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin COMMENT='用户信息';
+
+CREATE TABLE  `merchants` (
+    merchant_id VARCHAR (10) PRIMARY KEY NOT NULL,
+    merchant_name VARCHAR (20) NOT NULL,
+    merchant_sex VARCHAR (2),
+    merchant_age INTEGER (3),
+    merchant_id VARCHAR (2),
+    merchant_id VARCHAR (8)
+);
+
+import java.util.Scanner;
+
+/**
+ * 使用递归实现杨辉三角形并把每一行的数据存储到数组中
+ */
+public class YangHui {
+    private int n; //总行数
+    private int[][] array; //存储前n行杨辉三角形的二维数组
+
+    /**
+     * 构造方法
+     */
+    public YangHui(){}
+
+    public YangHui(int n, int[][] array) {
+        this.n = n;
+        this.array = array;
+    }
+
+    /**
+     * 使用递归实现杨辉三角形
+     * @param a 行
+     * @param b 列
+     * @return
+     */
+    public int iter(int a, int b){
+        if (b == 1 || b == a){
+            return 1;
+        }else {
+            return iter(a-1,b-1) + iter(a-1,b);
+        }
+    }
+
+    /**
+     * 利用数组把杨辉三角形的数据存储到数组中，并打印
+     */
+    public void printNum() {
+        for (int i = 0; i < this.array.length; i++) { //行
+            for (int j = 0; j <= i; j++) { //列
+                //调用迭代方法存储到数组中
+                array[i][j] = iter(i + 1, j + 1);
+                //打印
+                System.out.print(array[i][j] + "\t");
+            }
+            System.out.println();
+        }
+    }
+
+
+    /**
+     * 主程序入口
+     * @param args
+     */
+    public static void main(String[] args) {
+        //1.使用扫描仪
+        Scanner sc = new Scanner(System.in);
+        System.out.print("请输入行数：");
+        int row = sc.nextInt();
+
+        //2.创建实例 并使用构造方法设置对象属性
+        YangHui yangHui = new YangHui(row,new int[row][row]);
+
+        //4.调用方法打印杨辉三角形
+        yangHui.printNum();
+
+    }
+}

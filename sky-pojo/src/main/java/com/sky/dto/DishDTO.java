@@ -25,5 +25,7 @@ public class DishDTO implements Serializable {
     private Integer status;
     //口味
     private List<DishFlavor> flavors = new ArrayList<>();
+    //推荐套餐
+    private String Recommenddish;
 
 }

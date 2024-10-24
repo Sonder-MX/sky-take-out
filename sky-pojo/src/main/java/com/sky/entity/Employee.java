@@ -18,21 +18,21 @@ public class Employee implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Long id;
+    private Long id;                                //员工代码
 
-    private String username;
+    private String username;                        //用户姓名
 
-    private String name;
+    private String name;                            //员工姓名
 
-    private String password;
+    private String password;                        //密码
 
-    private String phone;
+    private String phone;                           //电话号码
 
-    private String sex;
+    private String sex;                             //性别
 
-    private String idNumber;
+    private String idNumber;                        //id账号
 
-    private Integer status;
+    private Integer status;                         //在线状态
 
     // @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss") // 会导致前端接收到的时间格式不对
     private LocalDateTime createTime;
