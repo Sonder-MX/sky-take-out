@@ -40,4 +40,27 @@ public class Category implements Serializable {
 
     //修改人
     private Long updateUser;
+    
+    //类型: 甜品分类
+    private Integer destype;
+
+
+    private String desname;
+
+
+    private Integer dessort;
+
+    
+    private Integer desstatus;
+
+   
+    private LocalDateTime descreateTime;
+
+   
+    private LocalDateTime desupdateTime;
+
+
+    private Long descreateUser;
+
+    private Long desupdateUser;
 }

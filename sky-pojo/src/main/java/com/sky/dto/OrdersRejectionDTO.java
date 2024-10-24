@@ -12,4 +12,8 @@ public class OrdersRejectionDTO implements Serializable {
     //订单拒绝原因
     private String rejectionReason;
 
+    
+    //拒绝原因是否同步到评论
+    private Int Reasontocomment;
+
 }
